@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Title</title>
+
+<style>
+
+    :root {
+        --yellow-colour: #ccc121
+    }
+
+    :root {
+        --darkblue-colour: #161f32
+    }
+
+    body {
+        background-color: black;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .topNavBar {
+        position: fixed;
+        height: 7.5vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: rgb(0, 0, 0);
+    }
+        
+    .overviewContainer {
+        position: relative;    
+        left: 0;
+        width: 100vw;
+        height: 93.75vh;
+        z-index: 0;
+        top: 7.5vh;
+        background-image: url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_0.jpg);
+        background-size: cover;
+        background-position: center top 70%;
+        background-color: gray; /*fallback colour */
+    }
+
+    .abilitiesContainer {
+        position: relative;
+        left: 0;
+        height: 80vh;
+        width: 100vw;
+        z-index: 0;
+        background-color: var(--darkblue-colour);
+    }
+
+    .skinsContainer {
+        display: grid;
+        place-items: center;
+        position: relative;
+        left: 0;
+        width: 100vw;
+        height: 135vh;
+        z-index: 0;
+        background-color: whitesmoke;
+    }
+
+    .infoContainer {
+        position: relative;
+        left: 0;
+        height: 50vh;
+        width: 100vw;
+        z-index: 0;
+        background-color: black;
+    }
+    
+    h1 {
+        color: var(--yellow-colour);
+        font-size: 30px;
+        position: absolute;
+        font-weight: 1000;
+        font-style: italic; 
+        top: 20%;
+        left: 10%;
+        z-index: 1;
+    }
+
+    h2 {
+        color: white;
+        font-size: 100px;
+        position: absolute;
+        font-weight: 1000;
+        font-style: italic; 
+        top: 17.5%;
+        left: 10%;
+        z-index: 1;
+    }
+
+    .description {
+        color: white;
+        font-size: 18px;
+        position: absolute;
+        font-weight: 10;
+        font-style: italic; 
+        top: 37.5%;
+        left: 10%;
+        width: 35%;
+        z-index: 1;
+    }
+
+    /* square box bits */
+    .squareBox {
+        display: grid;
+        place-items: center;
+        width: 7%;
+        aspect-ratio: 1;
+        position: absolute;
+        color: rgba(0, 0, 0, 0);
+        border: 2px solid var(--yellow-colour);
+    }
+
+    .squareBox-1 { top: 50%; left: 10%; }
+    .squareBox-2 { top: 50%; left: 18%; }
+
+    .darkBlueBox {
+        display: grid;
+        width: 85%;
+        aspect-ratio: 1;
+        position: absolute;
+        background-color: var(--darkblue-colour);
+        grid-template-rows: 15% 40% 15% 15% 15%;
+    }
+
+    .boxItem {
+        display: grid;
+        place-items: center;
+        background-color: rgba(0, 255, 255, 0);
+        align-items: center;
+        color: white;
+        font-size: 10px;
+    }
+
+
+    .text-container {
+        text-align: center; /* Center the text inside the container */
+        line-height: 175%
+    }
+
+    .roleImages {
+        width: 35%;
+        aspect-ratio: 1;
+        position: absolute
+    }
+
+    .roleImages-1 { left: 13%; }
+    .roleImages-2 { right: 13%; }
+
+    /* square box bits */
+
+    /*yellow line at the bottom */
+
+    .line {
+        height: 0.15%; /* Thickness of the line */
+        width: 37.5%;
+        position: absolute;
+        background-color: var(--yellow-colour); /* Color of the line */
+        margin: 10px 0; /* Spacing above and below the line */
+        left: 10%;
+        top: 80%;
+    }
+
+    .linksTextBelowLineContainer {
+        display: flex;
+        gap: 25px;
+        color: white;
+        position: absolute;
+        top: 82.5%;
+        left: 10%;
+        width: 35%;
+        z-index: 1;
+    }
+
+    .linksTextBelowLineContainer a {
+        font-size: 10px;
+        font-weight: 10;
+        color: white;
+        text-decoration: none;
+    }
+
+    .link-container a:hover {
+        text-decoration: underline; /* Underline on hover  NOT WORKING FIX LATER */
+    }
+    
+    /*yellow line at the bottom */
+
+
+    /*ABILITIES SECTION */
+
+    .abilityOverviewContainer {
+        display: grid;
+        place-items: center;
+        position: relative;
+        height: 40%;
+        aspect-ratio: 2;
+        z-index: 1;
+        left: 12.5%;
+        top: 20%;
+        background-color: rgba(255, 0, 255, 0);
+    }
+
+    .abilityIconContainer {
+        display: grid; 
+        position: absolute;
+        top: 55%;
+        grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+        grid-template-rows: repeat(2, 75px);
+        column-gap: 5px; 
+        row-gap: 20px;
+    }
+
+    .abilityIconContainer img {
+        width: 10%;
+        aspect-ratio: 1;
+        position: absolute;
+        transition: transform 0.3s;
+    }
+
+    .abilityIconContainer img:hover {
+        transform: scale(1.2);
+    }
+
+
+    .abilityBox {
+        display: grid;
+        place-items: center;
+        background-color: rgba(0, 255, 255, 0);
+        align-items: center;
+        color: white;
+        font-size: 10px;
+    }
+
+
+    .abilityBoxName {
+        background-color: rgba(0, 255, 255, 0);
+        text-align: center;
+        color: white;
+        font-size: 12.5px;
+        font-weight: bold;
+    }
+
+
+    .abilityGifContainer {
+        display: grid;
+        place-items: center;
+        position: absolute;
+        height: 60%;
+        width: 650px;
+        z-index: 1;
+        left: 52.5%;
+        top: 10%;
+        border: 1px solid var(--yellow-colour);
+        background-color: rgba(255, 0, 255, 0);
+    }
+
+    video {
+        width: 115%;
+        aspect-ratio: 2;
+    }
+
+    .abilityDescriptionContainer {
+        display: grid;
+        place-items: center;
+        position: absolute;
+        height: 20%;
+        width: 650px;
+        z-index: 2;
+        left: 52.5%;
+        top: 72.5%;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    /*ABILITIES SECTION */
+
+    /*SKINS SECTION */
+    .bigSkinDisplay {
+        display: grid;
+        place-items: center;
+        position: absolute;
+        height: 67.5%;
+        width: 1500px;
+        z-index: 1;
+        top: 10%;
+        background-color: rgba(255, 0, 255, 0);
+    }
+
+    .bigSkinDisplay img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .skinOptionsContainer {
+        display: grid;
+        align-items: start;
+        justify-items: center;
+        overflow-x: auto;
+        position: relative;
+        height: 12.5%;
+        width: 1200px;
+        z-index: 1;
+        top: 35%;
+        background-color: rgba(81, 255, 0, 0);
+
+        grid-template-columns: repeat(12, 1fr); /* 5 equal columns */
+    }
+    
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+
+    .skinCard {
+        width: 100%;
+        height: auto;
+        grid-template-rows: 1fr 0.01fr;
+        z-index: 2;
+    }
+
+    .skinCard img {
+        max-width: 90%; /* Ensure the image doesn't exceed the container */
+        height: auto;
+    }
+
+    .lineButton {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        position: absolute;
+        height: 50px;
+        width: 1250px;
+        z-index: 2;
+        top: 91%;
+        background-color: rgba(255, 0, 0, 0);
+        grid-template-columns: 0.9fr 0.05fr 0.05fr;
+    }
+
+    .lineButton img {
+        max-width: 40%;
+        max-height: auto;
+    }
+
+    .lineSlot {
+        grid-column: 1;
+    }
+
+    .progress {
+        grid-column: 1; /* Position progress bar in the first column */
+        width: 95%;
+        background-color: #000000; /* Background color of the progress bar */
+        height: 2.5px; /* Height of the progress bar */
+        border-radius: 1.25px; /* Rounded corners */
+    }
+
+    /*SKINS SECTION */
+
+
+    /*LAST SECTION */
+
+    .bottomNavBar {
+        position: absolute;
+        height: 15%;
+        width: 100%;
+        z-index: 2;
+        background-color: rgb(46, 46, 46)
+    }
+
+    /*LAST SECTION */
+ 
+</style>
+
+</head>
+
+<body>
+
+    <div class="topNavBar"></div>
+
+    <div class="overviewContainer">
+        <h1>THE BOY WHO SHATTERED TIME</h1>
+        <h2>EKKO</h2>
+        <p class="description">A prodigy from the rough streets of Zaun, Ekko manipulates time to twist any situation to his advantage. 
+            Using his own invention, the Zero Drive, he explores the branching possibilities of reality to craft the perfect moment. 
+            Though he revels in this...</p>
+
+        <div class="squareBox squareBox-1">
+            <div class="darkBlueBox"> 
+
+                <div class="boxItem item1">   <!-- hollow rows --></div>
+
+                <div class="boxItem item2">
+                    <img class = "roleImages roleImages-1" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/28/Slayer_icon.png/revision/latest?cb=20181117143556" alt="Slayer Icon">
+                    <img class = "roleImages roleImages-2" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/28/Mage_icon.png/revision/latest?cb=20181117143555" alt="Mage Icon">
+                    
+                </div>
+
+                <div class="boxItem item3">
+                    <div class="text-container"> ROLE <br> <span style="color: var(--yellow-colour);">ASSASSIN / MAGE</span> </div>
+                   
+                </div>
+
+                <div class="boxItem item4">
+                    
+                </div>
+
+                <div class="boxItem item5">  <!-- hollow rowss --></div> 
+
+            </div>
+
+        </div>
+
+        <div class="squareBox squareBox-2">
+            <div class="darkBlueBox"> 
+                
+                <div class="boxItem item1">   <!-- hollow rows --></div>
+
+                <div class="boxItem item2">
+                    
+                </div>
+
+                <div class="boxItem item3">
+                    <div class="text-container"> DIFFICULTY <br> <span style="color: var(--yellow-colour);">HIGH</span> </div>
+                   
+                </div>
+
+                <div class="boxItem item4">
+                    
+                </div>
+
+                <div class="boxItem item5">  <!-- hollow rowss --></div> 
+
+            </div>
+        </div>
+
+        <div class="line"></div>
+        <div class="linksTextBelowLineContainer">
+            <span style="color: gray; font-size: 10px;">CHAMPION MASTERY</span>
+            <a href="https://www.leagueofgraphs.com/champions/builds/ekko">LEAGUEOFGRAPHS.COM</a>
+            <a href="https://www.op.gg/champions/ekko/build">OP.GG</a>
+            <a href="https://www.probuilds.net/champions/details/ekko">PROBUILDS.NET</a>
+        </div> 
+
+
+    </div>
+    
+    <div class="abilitiesContainer">
+
+        <script> /* JS CODE */
+            const abilityDescriptions = {Passive: ["Z-DRIVE RESONANCE", "PASSIVE", 
+            "Every third attack or damaging spell on the same target deals bonus magic damage, and grants Ekko a burst of speed if the target is a champion.",
+            "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0245/ability_0245_P1.mp4"],
+
+            Q: ["TIMEWINDER", "Q", 
+            `Ekko throws a temporal grenade that expands into a time-distortion field upon hitting an enemy champion, slowing and damaging anyone caught inside. 
+            After a delay, the grenade rewinds back to Ekko, dealing damage on its return.`,
+            "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0245/ability_0245_Q1.mp4"],
+            
+            W: ["PARALLEL CONVERGENCE", "W", 
+            `Ekko's basic attacks deal bonus magic damage to low health enemies. He can cast Parallel 
+            Convergence to split the timeline, creating an anomaly after a few seconds that slows enemies caught inside. 
+            If Ekko enters the anomaly, he gains shielding and stuns enemies by suspending them in time.`,
+            "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0245/ability_0245_W1.mp4"],
+            
+            E: ["PHASE DIVE", "E", 
+            `Ekko rolls evasively while charging up his Z-Drive. His next attack deals bonus damage and warps reality, teleporting him to his target.`,
+            "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0245/ability_0245_E1.mp4"],
+            
+            R: ["CHRONOBREAK", "R", 
+            `Ekko shatters his timeline, becoming untargetable and rewinding to a more favorable point in time. 
+            He returns to whenever he was a few seconds ago, and heals for a percentage of the damage received in that duration. 
+            Enemies near his arrival zone take massive damage.`,
+            "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0245/ability_0245_R1.mp4"],
+        }
+        </script>
+     
+        <div class="abilityOverviewContainer">
+            <h2 style="font-size: 75px; font-weight: 900; top: 1%; left: 15%">ABILITIES</h2>
+
+            <div class="abilityIconContainer">
+
+                <div class="abilityBox item1">
+                    <img src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4b/Ekko_Z-Drive_Resonance.png/revision/latest?cb=20240810181816" alt="Passive"
+                    onclick="showSkillDescription('Passive'); showSkillGif('Passive')">
+                </div>
+
+                <div class="abilityBox item2">
+                    <img src="https://static.wikia.nocookie.net/leagueoflegends/images/c/ce/Ekko_Timewinder.png/revision/latest?cb=20240810181741" alt="TimeWinder"
+                    onclick="showSkillDescription('Q'); showSkillGif('Q')">
+                </div>
+
+                <div class="abilityBox item3">
+                    <img src="https://static.wikia.nocookie.net/leagueoflegends/images/c/c1/Ekko_Parallel_Convergence.png/revision/latest?cb=20240810181704" alt="Passive"
+                    onclick="showSkillDescription('W'); showSkillGif('W')">
+                </div>
+
+                <div class="abilityBox item4">
+                    <img src="https://static.wikia.nocookie.net/leagueoflegends/images/3/31/Ekko_Phase_Dive.png/revision/latest?cb=20240810181731" alt="PhaseDive"
+                    onclick="showSkillDescription('E'); showSkillGif('E')">
+                </div>
+
+                <div class="abilityBox item5">
+                    <img src="https://static.wikia.nocookie.net/leagueoflegends/images/5/5f/Ekko_Chronobreak.png/revision/latest?cb=20240810181631" alt="Chronobreak"
+                    onclick="showSkillDescription('R'); showSkillGif('R')">
+                </div>
+
+                <div class="abilityBoxName name1">
+                    Z-DRIVE RESONANCE
+                </div>
+
+                <div class="abilityBoxName name2">
+                    TIMEWINDER
+                </div>
+
+                <div class="abilityBoxName name3">
+                    <span style="font-weight: 900;"></span>PARALLEL CONVERGENCE
+                </div>
+
+                <div class="abilityBoxName name4">
+                    PHASE DIVE
+                </div>
+
+                <div class="abilityBoxName name5">
+                    CHRONOBREAK
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="abilityGifContainer">
+            <video id="abilityVideo" autoplay loop muted>
+                <source id="videoLink" src="" type="video/mp4">
+            </video>
+
+        </div>
+
+        <div class="abilityDescriptionContainer" id="TESTEST">
+            ASDNSADSAIODJ
+        </div>
+
+        <script>
+            function showSkillDescription(skill) {
+                const outputElement = document.getElementById("TESTEST");
+                const formattedDescriptions = abilityDescriptions[skill].map((desc, index) => { 
+                    let formattedDesc;
+                    if(index === 0) {
+                        formattedDesc = `<span style="font-weight: 600; font-size: 25px; color: white; font-style: italic;">${desc.replace(/\n/g, '<br>')}</span>`;
+                    }
+                    else if(index == 1){
+                        formattedDesc = `<span style="font-size: 15px; color: white;">${desc.replace(/\n/g, '<br>')}</span>`;
+                    }
+                    else if(index === 2){
+                        formattedDesc = `<span style="font-size: 15px; color: white;">${desc.replace(/\n/g, '<br>')}</span>`;
+                    }
+
+                    return formattedDesc; 
+                }).join(''); 
+
+                outputElement.innerHTML = formattedDescriptions;
+            }
+        </script>
+
+        <script>
+            function showSkillGif(skill) {
+                const videoLinkElement = document.getElementById("videoLink")
+                videoLinkElement.src = abilityDescriptions[skill][3]
+                const videoElement = document.getElementById("abilityVideo");
+                videoElement.load()
+                videoElement.play()
+            }
+        </script>
+
+
+
+    </div>
+
+    <div class="skinsContainer">
+        
+                    
+        <script>
+            const skinLinks = {
+                "Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_0.jpg",
+                "Sandstorm Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_1.jpg",
+                "Academy Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_2.jpg",
+                "Project: Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_3.jpg",
+                "SKT T1 Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_11.jpg",
+                "Trick Or Treat Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_12.jpg",
+                "True Damage Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_19.jpg",
+                "Pulsefire Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_28.jpg",
+                "Firelight Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_36.jpg",
+                "Star Guardian Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_45.jpg",
+                "Prestige Star Guardian Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_46.jpg",
+                "Breakout True Damage Ekko": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_56.jpg"
+
+            };
+            const skinKeys = Object.keys(skinLinks)
+        </script>
+        
+        <h3 style="margin: 0; padding: 0; font-size: 35px; font-weight: bold; font-style: italic; top: 65px; left: 250px; position: absolute;">AVAILABLE SKINS</h3>
+
+        <div class="bigSkinDisplay">
+            <img src="" alt="" id="Skin-Display">
+        </div>
+
+        <div class="skinOptionsContainer" id="skinOptions">
+
+           <div class="skinCard item1"><img src="" alt="" id="Skin-0" onclick="changeSkinDisplay('Ekko')"></div>
+           <div class="skinCard item2"><img src="" alt="" id="Skin-1" onclick="changeSkinDisplay('Sandstorm Ekko')"></div>
+           <div class="skinCard item3"><img src="" alt="" id="Skin-2" onclick="changeSkinDisplay('Academy Ekko')"></div>
+           <div class="skinCard item4"><img src="" alt="" id="Skin-3" onclick="changeSkinDisplay('Project: Ekko')"></div>
+           <div class="skinCard item5"><img src="" alt="" id="Skin-4" onclick="changeSkinDisplay('SKT T1 Ekko')"></div>
+           <div class="skinCard item1"><img src="" alt="" id="Skin-5" onclick="changeSkinDisplay('Trick Or Treat Ekko')"></div>
+           <div class="skinCard item2"><img src="" alt="" id="Skin-6" onclick="changeSkinDisplay('True Damage Ekko')"></div>
+           <div class="skinCard item3"><img src="" alt="" id="Skin-7" onclick="changeSkinDisplay('Pulsefire Ekko')"></div>
+           <div class="skinCard item4"><img src="" alt="" id="Skin-8" onclick="changeSkinDisplay('Firelight Ekko')"></div>
+           <div class="skinCard item5"><img src="" alt="" id="Skin-9" onclick="changeSkinDisplay('Star Guardian Ekko')"></div>
+           <div class="skinCard item1"><img src="" alt="" id="Skin-10" onclick="changeSkinDisplay('Prestige Star Guardian Ekko')"></div>
+           <div class="skinCard item2"><img src="" alt="" id="Skin-11" onclick="changeSkinDisplay('Breakout True Damage Ekko')"></div>
+
+           <div class="skinCard name1" id="Name-0"></div>
+           <div class="skinCard name2" id="Name-1"></div>
+           <div class="skinCard name3" id="Name-2"></div>
+           <div class="skinCard name4" id="Name-3"></div>
+           <div class="skinCard name5" id="Name-4"></div>
+           <div class="skinCard name1" id="Name-5"></div>
+           <div class="skinCard name2" id="Name-6"></div>
+           <div class="skinCard name3" id="Name-7"></div>
+           <div class="skinCard name4" id="Name-8"></div>
+           <div class="skinCard name5" id="Name-9"></div>
+           <div class="skinCard name1" id="Name-10"></div>
+           <div class="skinCard name2" id="Name-11"></div>
+    
+           
+           <script>
+            const min = 0;
+            const max = 12;
+           </script>
+                 
+           <script>
+            function displaySkinSmall(min, max) {
+                for(let i = min; i < max; i++){
+                const img = document.getElementById(`Skin-${i}`);
+                const name = document.getElementById(`Name-${i}`)
+                name.innerHTML = skinKeys[i].toUpperCase();
+                img.src = skinLinks[skinKeys[i]];
+                img.alt = `Skin-${i}`;
+            }
+            const bigImg = document.getElementById(`Skin-Display`)
+            bigImg.src = skinLinks[skinKeys[0]]
+            }
+
+            displaySkinSmall(min, max)
+            </script>
+
+            <script>
+                function changeSkinDisplay(skin) {
+                    const bigImg = document.getElementById(`Skin-Display`)
+                    bigImg.src = skinLinks[skin]
+                }
+
+                function changeMinMax(right) { /* button here works so its ok */
+                    if(right === true) {
+                        min += 1;
+                        max += 1;
+                    }
+
+                    else if(right === false) {
+                        if(min >= 1) {
+                            min -= 1;
+                            max -= 1;
+                        }
+                    }
+                    displaySkinSmall(min, max);
+                }
+
+            </script>
+
+
+        </div>
+
+        <div class="lineButton">
+
+            <div class="progress"></div> 
+            <div><img style="transform: rotate(180deg);" src="https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-forward-icon-png-image_925823.jpg" alt="right arrow"
+                onclick="changeMinMax(false)"></div>
+            <div><img src="https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-forward-icon-png-image_925823.jpg" alt="right arrow"
+                onclick="changeMinMax(true)"></div>
+
+        </div>
+
+    </div>
+
+    <div class="infoContainer">
+
+        <div class="bottomNavBar"></div>
+
+    </div>
+    
+</body>
+
+</html>
