@@ -513,7 +513,8 @@
                     <img src="https://static.wikia.nocookie.net/leagueoflegends/images/5/5f/Ekko_Chronobreak.png/revision/latest?cb=20240810181631" alt="Chronobreak"
                     onclick="showSkillDescription('R'); showSkillGif('R')">
                 </div>
-
+                
+                
                 <div class="abilityBoxName name1">
                     Z-DRIVE RESONANCE
                 </div>
@@ -545,7 +546,7 @@
         </div>
 
         <div class="abilityDescriptionContainer" id="TESTEST">
-            ASDNSADSAIODJ
+            
         </div>
 
         <script>
@@ -571,6 +572,7 @@
         </script>
 
         <script>
+
             function showSkillGif(skill) {
                 const videoLinkElement = document.getElementById("videoLink")
                 videoLinkElement.src = abilityDescriptions[skill][3]
@@ -578,6 +580,11 @@
                 videoElement.load()
                 videoElement.play()
             }
+        </script>
+
+        <script>
+            showSkillDescription('Passive');
+            showSkillGif('Passive');
         </script>
 
 
