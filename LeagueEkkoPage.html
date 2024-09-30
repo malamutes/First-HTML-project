@@ -8,7 +8,9 @@
 
 <body>
 
-    <div class="topNavBar"></div>
+    <div class="topNavBar">
+        
+    </div>
 
     <div class="overviewContainer">
         <h1>THE BOY WHO SHATTERED TIME</h1>
@@ -175,6 +177,7 @@
         <script>
             function showSkillDescription(skill) {
                 const outputElement = document.getElementById("TESTEST");
+                outputElement.style.textAlign = "center";
                 const formattedDescriptions = abilityDescriptions[skill].map((desc, index) => { 
                     let formattedDesc;
                     if(index === 0) {
@@ -332,7 +335,177 @@
 
     <div class="infoContainer">
 
-        <div class="bottomNavBar"></div>
+        <div class="bottomNavBar">
+            <script>
+                const buttonList = {
+                    Button1: ['ButtonOne', 'ABOUT LEAGUE OF LEGENDS', `https://oce.leagueoflegends.com/en/game-info/get-started/what-is-lol/?_gl=
+                    1*h631e0*_gcl_au*ODU2ODA5NzkzLjE3Mjc1MjY1NTk.*_ga*MTg5NDA2NzgxMC4xNzI3NTI2NTU5*_ga_FXBJE5DEDD*MTcyNzYyMTU2OC4zLjEuMTcyNzYyMjIyMy4wLjAuMA..`],
+
+                    Button2: ['ButtonTwo', 'PREPAID CARDS', `https://oce.leagueoflegends.com/en/page/league-legends-prepaid-game-cards/?_g
+                    l=1*oyayp8*_gcl_au*ODU2ODA5NzkzLjE3Mjc1MjY1NTk.*_ga*MTg5NDA2NzgxMC4xNzI3NTI2NTU5*_ga_FXBJE5DEDD*MTcyNzYyMTU2OC4zLjEuMTcyNzYyMjIyMy4wLjAuMA..`],
+
+                    Button3: ['ButtonThree', 'HELP US IMPROVE', `http://leagueoflegends.oce-surveyen2.sgizmo.com/s3/http://leagueoflegends.oce-surveyen2.sgizmo.com/s3/`],
+
+                    Button4: ['ButtonFour', 'SERVER STATUS', `https://status.riotgames.com/?locale=en_AU&region=oce`],
+
+                    Button5: ['ButtonFive', 'SUPPORT', `https://support.riotgames.com/hc/en-us`],
+                    
+                    Button6: ['ButtonSix', 'ESPORTS PRO SITE', `https://oce.lolesports.com/`],
+
+                    Button7: ['ButtonSeven', 'DOWNLOAD RIOT MOBILE COMPANION APP', `https://riotgames.sng.link/Dnyzj/csgh`],
+
+                    Button8: ['ButtonEight', 'PRIVACY NOTICE', `https://www.riotgames.com/en/privacy-notice`],
+
+                    Button9: ['ButtonNine', 'TERMS OF SERVICE', `https://www.riotgames.com/en/terms-of-service`],
+
+                    Button10: ['ButtonTen', 'ADDITIONAL TERMS FOR AUSTRALIA AND NEW ZEALAND', `https://oce.leagueoflegends.com/en-au/legal/consumer-guarantees/?_gl=1*1s9ylop*_
+                    gcl_au*ODU2ODA5NzkzLjE3Mjc1MjY1NTk.*_ga*MTg5NDA2NzgxMC4xNzI3NTI2NTU5*_ga_FXBJE5DEDD*MTcyNzYyMTU2OC4zLjEuMTcyNzYyMjIyMy4wLjAuMA..`],
+
+                    Button11: ['ButtonEleven', 'COOKIE REFERENCES', `javascript:void(0);`],
+                }
+
+                class greyAnchors {
+                    constructor(id, text, url) {
+                        this.id = id;
+                        this.text = text;
+                        this.url = url;
+                    }
+
+                    render() {
+                        const anchor = document.createElement('a');
+                        //button.className = `custom-button ${this.cssClass}`;
+                        anchor.innerText = this.text;
+                        anchor.target = '_blank';
+                        anchor.href = this.url;
+                        return anchor;
+                    }
+            }
+
+            </script>
+
+            <div class="buttonGrid">
+
+                <script>
+                    const buttonGrid = document.querySelector('.buttonGrid');
+                    for(let i = 1; i < 8; i++) /* dict start with index 1 */ {
+                        var index = `Button${i}`
+                        var anchor = new greyAnchors(buttonList[index][0], buttonList[index][1], buttonList[index][2]).render();
+                        anchor.classList.add("common-anchors");
+                        buttonGrid.appendChild(anchor);
+                    }
+
+                </script>               
+            </div>
+
+        </div>
+
+        <div class="informationGrid">
+            <script>
+                class myButton {
+                    constructor(icon, url, width, height) {
+                        this.icon = icon;
+                        this.url = url;
+                        this.width = width;
+                        this.height = height;
+                    }
+
+                    changelink(url) {
+                        window.open(this.url, '_blank');
+                    }
+
+                    handleclick() {
+                        this.changelink();
+                    }
+
+                    render() {
+                        const button = document.createElement("button");
+                        const img = document.createElement("img");
+                        img.src = this.icon;
+                        img.style.maxWidth = `${this.width}px`;
+                        img.style.maxHeight = `${this.height}px`;
+                        button.appendChild(img);
+                        button.onclick = this.handleclick.bind(this); 
+                        return button
+                    }
+                }
+            </script>
+
+            <div class="informationGrid-row row1"> /
+                <script>
+                    const socialMediaIcons = [
+                        "https://i.pinimg.com/originals/20/9b/d8/209bd859c265e7ffc4bfeb75877b23f7.png",
+                        "https://www.citypng.com/public/uploads/preview/hd-twitter-x-new-logo-outline-design-png-7358116966728686ajbu7h3ug.png",
+                        "https://e7.pngegg.com/pngimages/884/642/png-clipart-logo-facebook-inc-round-logo-desktop-wallpaper-black-and-white.png",
+                        "https://i.pinimg.com/originals/5d/39/fe/5d39fef91cacc3a7f46043a8fc587d3c.jpg",
+                        "https://i.pinimg.com/736x/46/ce/b8/46ceb85aec9788589841ae7060f31512.jpg"
+                    ]
+
+                    const urlLinks = [
+                        "https://www.youtube.com/user/riotgamesinc",
+                        "https://twitter.com/leagueoflegends",
+                        "https://www.facebook.com/leagueoflegends",
+                        "https://www.instagram.com/leagueoflegends/",
+                        "https://www.reddit.com/r/leagueoflegends/"
+                    ]
+
+                    const socialMediaRow = document.querySelector(".informationGrid-row.row1");
+                    for(let i = 0; i < 5; i++) {
+                        var but = new myButton(socialMediaIcons[i], urlLinks[i], 35, 35).render();
+                        but.classList.add("socialMediaButton");
+                        socialMediaRow.appendChild(but);
+                    }
+
+                </script>
+
+            </div>
+
+            <div class="informationGrid-row row2">
+                <script>
+
+                    const riotGamesButtonRow = document.querySelector(".informationGrid-row.row2");
+                    const icon = "https://i.pinimg.com/736x/c0/75/bf/c075bf9d6066fae5edd8079ac3ec0a8d.jpg";
+                    const url = "https://www.riotgames.com/en";
+                    var button = new myButton(icon, url, 150, 110).render();
+                    riotGamesButtonRow.appendChild(button);
+
+                </script>
+
+            </div>
+
+            <div class="informationGrid-row row3">
+                <img src="C:\Users\pavan\OneDrive\Desktop\html\Screenshot 2024-09-30 110458.png" alt="Trademark Statement">
+            </div>
+
+            <div class="informationGrid-row row4">
+                <script>
+                    const anchorRow = document.querySelector(".informationGrid-row.row4");
+                    for(let i = 8; i < 12; i++) /* dict start with index 1 */ {
+                        var index = `Button${i}`
+                        var anchor = new greyAnchors(buttonList[index][0], buttonList[index][1], buttonList[index][2]).render();
+                        anchor.classList.add("common-anchors");
+                        anchorRow.appendChild(anchor);
+                    }
+
+                </script>
+            </div>
+
+            <div class="informationGrid-row row5">
+                <script>
+                    
+                    const ageRatingRow = document.querySelector(".informationGrid-row.row5");
+
+                    var ageRating = new myButton("https://cmsassets.rgpub.io/sanity/images/dsfx7636/riotbar/8140c4ed97deb659baf186c09288c9d059bd9878-227x75.png?&h=100&fit=max",
+                        "http://www.classification.gov.au/Guidelines/Pages/M.aspx", 400, 100).render();
+
+                    ageRatingRow.appendChild(ageRating);
+
+                </script>
+
+                <img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/riotbar/abd57b6db12ece2a353bfb48fa17df6305172eba-2395x1425.png?&h=100&fit=max" alt="SCREENNSW">
+
+            </div>
+            
+        </div>
 
     </div>
     
